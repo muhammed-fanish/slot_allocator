@@ -21,6 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register', views.register.as_view(),name='register'),
     path('slot-register/', views.slot_register.as_view(),name='slot_register'),
-    # path('slots', views.get_slots.as_view(),name='slots')
+    path('slots', views.get_slots.as_view(),name='slots')
 
 ]

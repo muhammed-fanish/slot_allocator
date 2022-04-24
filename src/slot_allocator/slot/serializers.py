@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-class UserRegister(serializers.ModelSerializer) :
+class UserRegisterSerializer(serializers.ModelSerializer) :
     password2 = serializers.CharField(style={'input_type' : 'password'})
     is_hr = serializers.CharField(style={'input_type' : 'text'})
 
@@ -37,20 +37,16 @@ class UserRegister(serializers.ModelSerializer) :
         return reg
 
 
-class UserSlot(serializers.ModelSerializer) :
+class UserSlotSerializer(serializers.ModelSerializer) :
+    user_id = serializers.CharField(max_length=255)
+    slot_date = serializers.DateField()
+    from_time = serializers.TimeField()
+    to_time = serializers.TimeField()
+
     class Meta:
         model = UserSlot
         fields = ['user_id','slot_date','from_time','to_time']
 
-    def save(self) :
-        user = User.objects.get(id=)
-        reg = UserSlot(
-            user=user,
-            slot_date=self.validated_data['slot_date'],
-            form_time=self.validated_data['form_time'],
-            to_time=self.validated_data['to_time']
-        )
-        reg.save()
-        return reg
+
 
 

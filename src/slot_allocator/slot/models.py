@@ -12,7 +12,7 @@ class UserSlot(models.Model):
     class Meta:
         db_table = "UserSlot"
     def __str__(self):
-    		return self.item.name
+    		return (self.user.username + "(" + str(self.user.id) +")")
 
 
 
